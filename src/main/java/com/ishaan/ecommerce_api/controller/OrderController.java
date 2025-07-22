@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import com.ishaan.ecommerce_api.dto.OrderRequest;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,6 @@ public class OrderController {
 
     @GetMapping("/my")
     public ResponseEntity<List<Order>> getMyOrders(@AuthenticationPrincipal UserDetails user) {
-        return ResponseEntity.ok(orderService.getUserOrders(user.getUsername()));
+        return ResponseEntity.ok(orderService.getOrdersForUser(user.getUsername()));
     }
 }

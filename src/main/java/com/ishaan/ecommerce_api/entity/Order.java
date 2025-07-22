@@ -18,6 +18,16 @@ public class Order {
     @Id
     private String id;
 
+    private String userId;
+
+    private List<Product> products;
+
+    private double totalAmount;
+
+    private String address;
+
+    private LocalDateTime createdAt;
+
     @DBRef
     private User user;
 

@@ -19,14 +19,14 @@ public class CartController {
     @PostMapping("/add/{productId}")
     public ResponseEntity<String> addToCart(
             @AuthenticationPrincipal UserDetails user,
-            @PathVariable Long productId,
+            @PathVariable String productId,  // CHANGED Long → String
             @RequestParam int quantity) {
         cartService.addToCart(user.getUsername(), productId, quantity);
         return ResponseEntity.ok("Added to cart");
     }
 
     @GetMapping
-    public ResponseEntity<Map<Long, Integer>> viewCart(@AuthenticationPrincipal UserDetails user) {
+    public ResponseEntity<Map<String, Integer>> viewCart(@AuthenticationPrincipal UserDetails user) { // CHANGED Long → String
         return ResponseEntity.ok(cartService.getCart(user.getUsername()));
     }
 

@@ -15,6 +15,8 @@ public class OrderItem {
     @Id
     private String id;
 
+    private String userId; // User ID who placed the order
+
     @DBRef
     private Product product;
 
