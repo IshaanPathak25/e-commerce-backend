@@ -1,13 +1,14 @@
-package com.example.ecommerce.entity;
+package com.ishaan.ecommerce_api.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Table(name = "orders")
+@Document(collection = "orders")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,13 +16,12 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne
+    @DBRef
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @DBRef
     private List<OrderItem> items;
 
     private LocalDateTime orderDate;

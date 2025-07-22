@@ -1,14 +1,14 @@
-package com.example.ecommerce.service;
+package com.ishaan.ecommerce_api.service;
 
-import com.example.ecommerce.dto.OrderRequest;
-import com.example.ecommerce.entity.Cart;
-import com.example.ecommerce.entity.Order;
-import com.example.ecommerce.entity.Product;
-import com.example.ecommerce.entity.User;
-import com.example.ecommerce.repository.CartRepository;
-import com.example.ecommerce.repository.OrderRepository;
-import com.example.ecommerce.repository.ProductRepository;
-import com.example.ecommerce.repository.UserRepository;
+import com.ishaan.ecommerce_api.dto.OrderRequest;
+import com.ishaan.ecommerce_api.entity.Order;
+import com.ishaan.ecommerce_api.entity.OrderItem;
+import com.ishaan.ecommerce_api.entity.Product;
+import com.ishaan.ecommerce_api.entity.User;
+import com.ishaan.ecommerce_api.repository.OrderRepository;
+import com.ishaan.ecommerce_api.repository.OrderItemRepository;
+import com.ishaan.ecommerce_api.repository.ProductRepository;
+import com.ishaan.ecommerce_api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,30 +21,31 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
-    private final CartRepository cartRepository;
+    private final OrderItemRepository orderItemRepository;
     private final ProductRepository productRepository;
 
-    public Order placeOrder(Long userId, OrderRequest request) {
+    public Order placeOrder(String userId, OrderRequest request) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        List<Cart> cartItems = cartRepository.findByUser(user);
+        List<OrderItem> cartItems = orderItemRepository.findByUserId(userId);
         if (cartItems.isEmpty()) {
             throw new RuntimeException("Cart is empty. Cannot place order.");
         }
 
+        double total = cartItems.stream()
+                .mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity())
+                .sum();
+
         Order order = Order.builder()
-                .user(user)
-                .products(cartItems.stream().map(Cart::getProduct).toList())
-                .totalAmount(cartItems.stream()
-                        .mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity())
-                        .sum())
+                .userId(userId)
+                .products(cartItems.stream().map(OrderItem::getProduct).toList())
+                .totalAmount(total)
                 .createdAt(LocalDateTime.now())
                 .address(request.getAddress())
                 .build();
 
-        // Reduce stock of each product
-        for (Cart item : cartItems) {
+        for (OrderItem item : cartItems) {
             Product product = item.getProduct();
             int updatedStock = product.getStock() - item.getQuantity();
             if (updatedStock < 0) {
@@ -54,15 +55,12 @@ public class OrderService {
             productRepository.save(product);
         }
 
-        // Clear cart
-        cartRepository.deleteAll(cartItems);
+        orderItemRepository.deleteAll(cartItems);
 
         return orderRepository.save(order);
     }
 
-    public List<Order> getOrdersForUser(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        return orderRepository.findByUser(user);
+    public List<Order> getOrdersForUser(String userId) {
+        return orderRepository.findByUserId(userId);
     }
 }

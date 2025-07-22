@@ -1,11 +1,11 @@
-package com.example.ecommerce.service;
+package com.ishaan.ecommerce_api.service;
 
-import com.example.ecommerce.dto.AuthRequest;
-import com.example.ecommerce.dto.AuthResponse;
-import com.example.ecommerce.entity.Role;
-import com.example.ecommerce.entity.User;
-import com.example.ecommerce.repository.UserRepository;
-import com.example.ecommerce.security.JwtUtil;
+import com.ishaan.ecommerce_api.dto.AuthRequest;
+import com.ishaan.ecommerce_api.dto.AuthResponse;
+import com.ishaan.ecommerce_api.entity.Role;
+import com.ishaan.ecommerce_api.entity.User;
+import com.ishaan.ecommerce_api.repository.UserRepository;
+import com.ishaan.ecommerce_api.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.userdetails.UserDetails;

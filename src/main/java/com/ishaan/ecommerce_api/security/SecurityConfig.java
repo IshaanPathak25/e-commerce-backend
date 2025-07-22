@@ -1,4 +1,4 @@
-package com.example.ecommerce.security;
+package com.ishaan.ecommerce_api.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.*;

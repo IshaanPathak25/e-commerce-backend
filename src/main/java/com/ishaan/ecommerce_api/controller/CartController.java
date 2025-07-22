@@ -1,6 +1,6 @@
-package com.example.ecommerce.controller;
+package com.ishaan.ecommerce_api.controller;
 
-import com.example.ecommerce.service.CartService;
+import com.ishaan.ecommerce_api.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

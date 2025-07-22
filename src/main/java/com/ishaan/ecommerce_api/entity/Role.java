@@ -1,4 +1,4 @@
-package com.example.ecommerce.entity;
+package com.ishaan.ecommerce_api.entity;
 
 public enum Role {
     USER,

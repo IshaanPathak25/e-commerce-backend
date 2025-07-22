@@ -1,8 +1,8 @@
-package com.example.ecommerce.controller;
+package com.ishaan.ecommerce_api.controller;
 
-import com.example.ecommerce.dto.AuthRequest;
-import com.example.ecommerce.dto.AuthResponse;
-import com.example.ecommerce.service.UserService;
+import com.ishaan.ecommerce_api.dto.AuthRequest;
+import com.ishaan.ecommerce_api.dto.AuthResponse;
+import com.ishaan.ecommerce_api.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

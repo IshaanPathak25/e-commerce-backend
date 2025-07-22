@@ -1,7 +1,6 @@
-package com.example.ecommerce.repository;
+package com.ishaan.ecommerce_api.repository;
 
-import com.example.ecommerce.entity.Product;
+import com.ishaan.ecommerce_api.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
-}
+public interface ProductRepository extends MongoRepository<Product, String> {}

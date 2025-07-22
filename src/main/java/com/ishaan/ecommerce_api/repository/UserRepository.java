@@ -1,11 +1,11 @@
-package com.example.ecommerce.repository;
+package com.ishaan.ecommerce_api.repository;
 
-import com.example.ecommerce.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.ishaan.ecommerce_api.entity.User;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends MongoRepository<User, String> {
     Optional<User> findByUsername(String username);
     boolean existsByUsername(String username);
 }

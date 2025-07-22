@@ -1,7 +1,7 @@
-package com.example.ecommerce.controller;
+package com.ishaan.ecommerce_api.controller;
 
-import com.example.ecommerce.entity.Order;
-import com.example.ecommerce.service.OrderService;
+import com.ishaan.ecommerce_api.entity.Order;
+import com.ishaan.ecommerce_api.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

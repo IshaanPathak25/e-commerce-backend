@@ -1,8 +1,8 @@
-package com.example.ecommerce.service;
+package com.ishaan.ecommerce_api.service;
 
-import com.example.ecommerce.dto.ProductRequest;
-import com.example.ecommerce.entity.Product;
-import com.example.ecommerce.repository.ProductRepository;
+import com.ishaan.ecommerce_api.dto.ProductRequest;
+import com.ishaan.ecommerce_api.entity.Product;
+import com.ishaan.ecommerce_api.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(Long id, ProductRequest request) {
+    public Product updateProduct(String id, ProductRequest request) {
         Product existing = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
         existing.setName(request.getName());
@@ -34,7 +34,7 @@ public class ProductService {
         return productRepository.save(existing);
     }
 
-    public void deleteProduct(Long id) {
+    public void deleteProduct(String id) {
         productRepository.deleteById(id);
     }
 
@@ -42,7 +42,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product getProductById(Long id) {
+    public Product getProductById(String id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }

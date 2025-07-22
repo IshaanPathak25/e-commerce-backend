@@ -1,9 +1,11 @@
-package com.example.ecommerce.entity;
+package com.ishaan.ecommerce_api.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "order_items")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,10 +13,9 @@ import lombok.*;
 public class OrderItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne
+    @DBRef
     private Product product;
 
     private int quantity;

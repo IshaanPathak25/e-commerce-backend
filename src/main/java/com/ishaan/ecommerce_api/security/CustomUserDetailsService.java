@@ -1,7 +1,7 @@
-package com.example.ecommerce.security;
+package com.ishaan.ecommerce_api.security;
 
-import com.example.ecommerce.entity.User;
-import com.example.ecommerce.repository.UserRepository;
+import com.ishaan.ecommerce_api.entity.User;
+import com.ishaan.ecommerce_api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;

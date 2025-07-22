@@ -1,7 +1,6 @@
-package com.example.ecommerce.repository;
+package com.ishaan.ecommerce_api.repository;
 
-import com.example.ecommerce.entity.OrderItem;
+import com.ishaan.ecommerce_api.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
-}
+public interface OrderItemRepository extends MongoRepository<OrderItem, String> {}

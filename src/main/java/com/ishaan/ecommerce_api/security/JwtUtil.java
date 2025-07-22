@@ -1,6 +1,6 @@
-package com.example.ecommerce.security;
+package com.ishaan.ecommerce_api.security;
 
-import com.example.ecommerce.entity.Role;
+import com.ishaan.ecommerce_api.entity.Role;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
