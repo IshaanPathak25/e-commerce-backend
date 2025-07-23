@@ -4,9 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class HomeController {
+
     @GetMapping("/")
     public String home() {
-        return "Hello from Spring Boot!";
+        return "🎉 Hello! Your E-commerce API is up and running.";
     }
 }
