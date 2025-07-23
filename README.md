@@ -109,3 +109,72 @@ mvn spring-boot:run
 ```makefile
 Authorization: Bearer <token>
 ```
+
+---
+
+## 📮 API Endpoints
+
+### 🔐 Auth
+
+| Method | Endpoint        | Description         |
+|--------|------------------|---------------------|
+| **POST**   | `/auth/register`   | Register new user   |
+| **POST**   | `/auth/login`      | Login & get token   |
+
+### 🛍️ Product
+
+| Method | Endpoint           | Description              |
+|--------|--------------------|--------------------------|
+| **POST**   | `/products`          | Add new product (admin)  |
+| **PUT**    | `/products/{id}`     | Update product           |
+| **DELETE** | `/products/{id}`     | Delete product           |
+| **GET**    | `/products`          | Get all products         |
+| **GET**    | `/products/{id}`     | Get product by ID        |
+
+### 📦 Orders
+
+| Method | Endpoint              | Description               |
+|--------|------------------------|---------------------------|
+| **POST**   | `/orders/place`          | Place a new order         |
+| **GET**    | `/orders/user/{id}`      | View user’s order history |
+
+---
+
+## 🧪 Testing with Postman
+
+**You can use Postman to:**
+- Register/login users
+- Add products
+- Place orders
+- Simulate cart operations
+
+🔐 Use the JWT token in headers for all protected routes.
+
+---
+
+## 📌 Future Enhancements
+
+- ✅ Add real cart system (stored in DB)
+- ✅ Add payment gateway integration
+- ✅ Add product reviews & ratings
+- ✅ Add admin dashboard
+
+---
+
+## 🤝 Contributing
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature-name`)
+3. Commit your changes
+4. Push and open a PR
+
+---
+
+## 📄 License
+
+**This project is open-source under the MIT License.**
+
+---
+
+## 🙋‍♂️ Maintainer
+
+**Ishaan Pathak** - 📫[LinkedIn](https://www.linkedin.com/in/ishaan-pathak25/)
